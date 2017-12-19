@@ -12,13 +12,14 @@ fonksiyonlardan istediklerimizi kullanarak.Orderları oluşturuyoruz. ve ardınd
 */
 
 // NORMAL SİPARİŞLER İÇİN  KULLANILIR
-$cargo->shippingOrderVoNormal('111126', '111126', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'can@crealive.net', '05364778591', '', '');  
+$cargo->shippingOrderVoNormal(CARGO_KEY, INVOİCE_KEY, CARGO_COUNT, FULLNAME, ADDRESS,DISTRICT, CITY, EMAİL, PHONE1,PHONE2='', PHONE3='');
+
 
 //KAPIDA NAKİT ODENECEK SİPARİŞLER İÇİN KULLANILIR
-$cargo->shippingOrderVoPayAtTheDoorAsCash('1223','232323','23.50', '111121', '111121', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'can@crealive.net', '05364778591', '', '');
+$cargo->shippingOrderVoPayAtTheDoorAsCash(FATURA_NO,IRSALİYE_NO,TOTAL_AMOUNT, CARGO_KEY, INVOİCE_KEY, CARGO_COUNT, FULLNAME, ADDRESS,DISTRICT, CITY, EMAİL, PHONE1,PHONE2='', PHONE3='');
 
 //KAPIDA KREDİ KARTI İLE ODENECEK SİPARİŞLER İÇİN KULLANILIR
-$cargo->shippingOrderVoPayAtTheDoorByCreditCard('1223','232323','23.50',2, '111124', '111124', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'can@crealive.net', '05364778591', '', '');
+$cargo->shippingOrderVoPayAtTheDoorByCreditCard(FATURA_NO,IRSALİYE_NO,TOTAL_AMOUNT,TAKSİT, CARGO_KEY, INVOİCE_KEY, CARGO_COUNT, FULLNAME, ADDRESS,DISTRICT, CITY, EMAİL, PHONE1,PHONE2='', PHONE3='');
 
 $res=$cargo->createShipment();
 
@@ -28,7 +29,7 @@ $res=$cargo->createShipment();
   Sınırsız kargo key parametresi gönderip iptal edebiliriz.
  *
  * */
-$res = $cargo->cancelShipment(['111125']);
+$res = $cargo->cancelShipment(array CARGO_KEYS);
 
 
 
@@ -38,5 +39,26 @@ $res = $cargo->cancelShipment(['111125']);
  *
  * */
 
+$res = $cargo->queryShipment(array CARGO_KEYS);
+
+
+
+Örnekler :
+
+Kargo Oluşturma Ornek;
+$cargo->shippingOrderVoNormal('111126', '111126', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'can@crealive.net', '05232342334', '', '');
+$res = $cargo->createShipment();
+
+Kargo iptal Ornek;
+
+$res = $cargo->cancelShipment(['111126']);
+
+Kargo Sorgulama Ornek;
 $res = $cargo->queryShipment(['111126']);
+
+
+
+
+
+
 
