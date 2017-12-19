@@ -45,8 +45,22 @@ $res = $cargo->queryShipment(array CARGO_KEYS);
 
 Örnekler :
 
-Kargo Oluşturma Ornek;
-$cargo->shippingOrderVoNormal('111126', '111126', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'can@crealive.net', '05232342334', '', '');
+$cargo = new YurtIci('USER_NAME', 'USER_PASSWORD');
+
+
+1 sipariş için Kargo Oluşturma Ornek;
+
+
+$cargo->shippingOrderVoNormal('111126', '111126', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'canavci2016@gmail.com', '05232342334', '', '');
+
+$res = $cargo->createShipment();
+
+2 tane ayrı sipariş için Kargo Oluşturma Ornek;
+
+$cargo->shippingOrderVoNormal('111127', '111127', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'canavci2016@gmail.com', '05232342334', '', '');
+
+$cargo->shippingOrderVoNormal('111128', '111128', 1, 'can avcı', 'Kartal tepe mahallesi Yalçın Sok. No:11 Daire:14 Sefaköy', 'Küçük Çekmece', 'istanbul', 'canavci2016@gmail.com', '05232342334', '', '');
+
 $res = $cargo->createShipment();
 
 Kargo iptal Ornek;
