@@ -119,19 +119,7 @@ class YurtIci
    </soapenv:Body>
 </soapenv:Envelope>';
 
-
-        $this->curl->setUrl('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
-        $this->curl->refreshHeader();
-        $this->curl->setHeader([
-            'Accept-Encoding: gzip,deflate',
-            'Content-Type: text/xml;charset=UTF-8',
-            'SOAPAction: ""',
-            'Content-Length: ' . strlen($xml),
-            'Host: webservices.yurticikargo.com:8080',
-            'Connection: Keep-Alive',
-            'User-Agent: Apache-HttpClient/4.1.1 (java 1.5)',
-        ]);
-        return $this->curl->execute($xml, true);
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
     }
 
 
@@ -155,19 +143,8 @@ class YurtIci
       </ship:cancelShipment>
    </soapenv:Body>
 </soapenv:Envelope>';
-
-        $this->curl->setUrl('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
-        $this->curl->refreshHeader();
-        $this->curl->setHeader([
-            'Accept-Encoding: gzip,deflate',
-            'Content-Type: text/xml;charset=UTF-8',
-            'SOAPAction: ""',
-            'Content-Length: ' . strlen($xml),
-            'Host: webservices.yurticikargo.com:8080',
-            'Connection: Keep-Alive',
-            'User-Agent: Apache-HttpClient/4.1.1 (java 1.5)',
-        ]);
-        return $this->curl->execute($xml, true);
+        
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
     }
 
 
@@ -205,7 +182,12 @@ class YurtIci
    </soapenv:Body>
 </soapenv:Envelope>';
 
-        $this->curl->setUrl('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
+    }
+    
+    
+    private function send($url,$xml){
+        $this->curl->setUrl($url);
         $this->curl->refreshHeader();
         $this->curl->setHeader([
             'Accept-Encoding: gzip,deflate',
@@ -218,7 +200,6 @@ class YurtIci
         ]);
         return $this->curl->execute($xml, true);
     }
-
 
     private function oauth()
     {
