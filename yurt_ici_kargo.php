@@ -119,7 +119,7 @@ class YurtIci
    </soapenv:Body>
 </soapenv:Envelope>';
 
-        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices', $xml);
     }
 
 
@@ -144,7 +144,7 @@ class YurtIci
    </soapenv:Body>
 </soapenv:Envelope>';
         
-        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices', $xml);
     }
 
 
@@ -182,7 +182,7 @@ class YurtIci
    </soapenv:Body>
 </soapenv:Envelope>';
 
-        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices');
+        return $this->send('http://webservices.yurticikargo.com:8080/KOPSWebServices/ShippingOrderDispatcherServices', $xml);
     }
     
     
